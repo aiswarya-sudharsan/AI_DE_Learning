@@ -1,4 +1,4 @@
-
+#Assignments - Python Fundamentals
 #A. Python is an indent based programming language
 #The following program throws an indentation error. Correct it and make sure it prints properly.
 
@@ -76,13 +76,13 @@ fee = 1000.50 # Dynamic Typing
 print("fee type",fee, type(fee))
 gst_rate = "eighteen percentage" #string Dynamic typing
 print("gst_rate type",gst_rate,type(gst_rate))
-print(fee*gst_rate) # strongly typed
+# print(fee*gst_rate) # strongly typed
 
 ######################################################################################################
 #E. Variables Naming Conventions
 #Use Case 1:
 #Identify which variable names below are invalid for Inceptez’s student database:
-
+'''
 2student = 'Ravi' #invalid started with number
 _student_id = 1001 #valid
 studentName = 'Priya' #valid
@@ -95,8 +95,98 @@ inceptez_batch = 'Morning' #valid
 DataEngineeringBatch = "WE49" #PascalCase
 dataEngineeringBatch = "WE45"#camelCase
 data_engineering_batch = 100 #snake_case
+'''
+######################################################################################################
+
+#F. Type identification & Casting
+#Use Case 1:
+#Write a program that asks for an employee’s age.
+#1. Checks its type is of string (think about using isinstance() function)
+#2. Converts it to int (continue writing your program from here..)
+#3. Prints the years pending for retirement, for eg. 60 is the retirement age.
+#Example:
+#Enter your age: 40
+#You will retire in 20 years at Inceptez Technologies.
+'''
+age: str =str(input("Enter your age:"))#Converting the type after getting input from user
+print(type(age))
+#Check whether the given input is of type str or not?
+print(isinstance(age,str))
+years_to_retire = 60 - int(age)
+print("age of the person to retire ",years_to_retire)
+'''
+
+
+#Use Case 2 (Debug):
+#Fix the type error in the following code for salary calculation:
+
+salary = '50000'
+bonus = 10000
+print('Total Salary in Inceptez:', int(salary) + bonus)
 
 ######################################################################################################
 
+#G. Data types and casting
+#Use Case 1 — Employee Salary Breakdown Using Numeric & String Types
+#Employee Salary Breakdown
+#a. Write a program that asks the user for:
+#employee_name (string)
+#base_salary (float)
+#hra_percent (integer)
+#bonus_amount (float)
+'''
+employee_name:str = input("Enter your employee name:")
+base_salary:float = float(input("Enter your base salary:"))
+hra_percent:int = int(input("Enter your hra percentage:"))
+bonus_amount:float = float(input("Enter your bonus amount:"))
 
+HRA = base_salary * (20 / 100)
+Total_Salary = base_salary + HRA + bonus_amount
+print("Employee:",employee_name)
+print("Base Salary",base_salary)
+print("HRA @ 20%",HRA)
+print("Total Salary Payable",Total_Salary)
 
+#Use Case 2: Student Result Classification
+#a. Write a program that takes marks as input (initially as a string).
+#B. Check if the value can be converted to float.
+#C. Then classify (try using if condition with the help of AI, however we will learn about if condition soon):
+#Marks >= 90 --> Outstanding
+#Marks >= 75 --> Excellent
+#Marks >= 50 --> Pass
+#Marks < 50 --> Fail
+#D. If the input is not numeric, print:
+#Invalid marks entered — Please provide numeric input.
+
+mark = str(input("Enter your mark:"))
+print(type(mark))
+mark = float(mark)
+print(type(mark))
+
+if mark>=90:
+    print("Result: Outstanding")
+elif mark>=75:
+    print("Result: Excellent")
+elif mark>=50:
+    print("Result: Pass")
+else:
+    print("Result: Fail")
+
+#D. If the input is not numeric, print:
+#Invalid marks entered — Please provide numeric input.
+
+check_mark_input = input("Enter your mark:")
+if not isinstance(check_mark_input,int):
+    print("Enter mark in integer format")
+'''
+
+#Use Case 3: Bug Fixing — Datatype Mismatch
+#The below code is intended to calculate total price, but it has datatype errors. Fix it.
+#Incorrect code:
+item_name = input("Enter product name: ")
+price = float(input("Enter price per item: "))
+quantity = int(input("Enter quantity: "))
+total_cost = price * quantity
+print("You purchased " + str(quantity) + " units of " + item_name)
+print("Total payable: " + str(total_cost) +" INR")
+######################################################################################################
