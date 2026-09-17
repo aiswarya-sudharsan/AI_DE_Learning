@@ -116,7 +116,6 @@ years_to_retire = 60 - int(age)
 print("age of the person to retire ",years_to_retire)
 '''
 
-
 #Use Case 2 (Debug):
 #Fix the type error in the following code for salary calculation:
 
@@ -179,7 +178,7 @@ check_mark_input = input("Enter your mark:")
 if not isinstance(check_mark_input,int):
     print("Enter mark in integer format")
 '''
-
+'''
 #Use Case 3: Bug Fixing — Datatype Mismatch
 #The below code is intended to calculate total price, but it has datatype errors. Fix it.
 #Incorrect code:
@@ -187,6 +186,139 @@ item_name = input("Enter product name: ")
 price = float(input("Enter price per item: "))
 quantity = int(input("Enter quantity: "))
 total_cost = price * quantity
-print("You purchased " + str(quantity) + " units of " + item_name)
+print(f"You purchased {quantity}, units of {item_name}")
 print("Total payable: " + str(total_cost) +" INR")
+'''
+######################################################################################################
+#H. Python Operators Usecases
+#Use Case 1:
+#Internet Data Usage Calculator. Write a program that asks the user for:
+#Total monthly data limit (in GB)
+#Data used so far (in GB)
+
+#Calculate using arithmetic operators: Remaining data = limit - used
+#Usage percentage = (used / limit) * 100
+#Print: Remaining data, Usage percentage rounded to 2 decimals
+#If usage percentage is greater than or equal to 80, print:"Warning: High usage, consider upgrading your plan."
+'''
+month_data_limit = int(input("Enter the total monthly data limit in (GB):"))
+data_usage = int(input("Enter the data used so far in (GB):"))
+
+remaining_data = month_data_limit - data_usage
+usage_percentage = (data_usage / month_data_limit) * 100
+print(f"Remaining data {remaining_data} GB, Usage data {round(float(usage_percentage),2)} %")
+if usage_percentage >= 80:
+    print("Warning: High usage, consider upgrading your plan.")
+
+#Use Case 2: Shopping Discount Calculation
+#Write a program that takes: Original price (float), Discount percent (int)
+#Using assignment and arithmetic operators, calculate:
+#Discount amount = (price * discount_percent) / 100
+#Final price = price - discount_amount
+#Print: Original price, discount applied, and final payable amount.
+
+original_price = float(input("Enter original price: "))
+discount_percentage = int(input("Enter discount percentage: "))
+discount_amount = (original_price * discount_percentage) / 100
+final_amount = original_price - discount_amount
+print(f"Original price: {original_price} discount applied: {discount_amount} Final amount paid: {final_amount}")
+
+#Use Case 3 (Bug Fixing): Logical and Comparison Operator Errors
+#The following code should determine voting eligibility, but it contains operator mistakes. Fix it.
+#Incorrect code:
+#age = input("Enter age: ")
+# citizen = input("Are you an Indian citizen? (yes/no)")
+#if age > "18" and citizen = "yes":
+# print("Eligible to vote")
+# else:
+# print("Not eligible")
+#Expected behavior:
+#Convert age to integer before comparison.
+#Only print "Eligible to vote" if age is 18 or above AND citizen input is "yes" (case-insensitive).
+
+age = int(input("Enter age: "))
+citizen = input("Are you an Indian citizen? (yes/no)").strip().lower()
+if age > 18 and citizen == "yes":
+    print("Eligible to vote")
+else:
+    print("Not eligible")
+
+
+######################################################################################################
+#I. Conditional Structure
+#Use Case 1: Banking Eligibility Check
+#Write a program that asks the user for: Age , Monthly income
+#Conditions:
+#If age < 18: print "Not eligible for a bank account."
+#If age >= 18 and income < 15000: print "Eligible for basic savings account."
+#If age >= 18 and income between 15000 and 50000: print "Eligible for savings + salary account."
+#If age >= 18 and income > 50000: print "Eligible for premium account."
+
+age_check = int(input("Enter age for banking eligibility check: "))
+monthly_income = float(input("Enter monthly income: "))
+if age_check <18:
+    print("Not eligible for a bank account")
+elif monthly_income <15000:
+    print("Eligible for basic savings account.")
+elif monthly_income <= 50000:
+    print("Eligible for savings + salary account.")
+elif monthly_income > 50000:
+    print("Eligible for premium account.")
+else:
+    print("Not eligible")
+
+#Use Case 2: Check room availability
+#-Check room availability
+#    - If available:
+#        - If guest is VIP
+#            → Offer complimentary upgrade
+#        - Else if member 5+ years
+#            → Offer discount
+#        - Else
+#            → Standard price
+#    - Else:
+#        → Show: "No rooms available"
+
+available_room = input("Enter room availability (yes/no):").strip().lower()
+
+if available_room == "yes":
+    guest_type = input("Enter guest type: VIP or member or non_member").strip()
+    if guest_type == "member":
+        years_of_membership = int(input("Enter years of membership: "))
+    if guest_type == "VIP":
+        print("Offer: Complimentary upgrade")
+    elif guest_type == "member" and years_of_membership > 5:
+        print("Offer: Discount 20 percentage")
+    else:
+        print("standard price")
+else:
+    print("no rooms available")
+'''
+
+#Use Case 3 (Bug Fixing): Nested Condition Logic Issue
+#Fix the following code so that it correctly determines whether the entered temperature indicates normal, fever, or high fever.
+#Incorrect code:
+"""
+temp = input("Enter body temperature in Celsius: ")
+if temp < "37":
+ print("Normal temperature")
+ elif temp > "37" and temp < "39":
+ print("Fever")
+ else
+ print("High fever")
+Expected behavior:
+Convert temperature to float before comparison.
+Conditions should print:
+ Normal temperature (less than 37)
+ Fever (between 37 and 39)
+ High fever (39 and above)
+"""
+temp = float(input("Enter body temperature in Celsius: "))
+if temp < 37:
+    print("Normal temperature")
+elif temp < 39:
+    print("Fever")
+else:
+    print("High fever")
+
 ######################################################################################################
